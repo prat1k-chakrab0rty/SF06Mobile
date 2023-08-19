@@ -1,21 +1,26 @@
 import * as React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-
-import HomeScreen from './screens/HomeScreen';
-import LoginScreen from './screens/LoginScreen';
 import { NavigationContainer } from '@react-navigation/native';
+import SplashScreen from './screens/SplashScreen';
+import Navigation from './AppNavigator';
 
 const Stack = createStackNavigator();
 
 function AppNavigator() {
+  const [isAppReady, setAppReady] = React.useState(false);
+
+  React.useEffect(() => {
+    // Simulate some initialization or data loading
+    setTimeout(() => {
+      setAppReady(true);
+    }, 3000); // Set an appropriate time
+
+    // You can add any other initialization logic here
+  }, []);
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Login">
-        <Stack.Screen name="Login" component={LoginScreen} />
-        <Stack.Screen name="Home" component={HomeScreen} />
-        {/* Add more screens here */}
-      </Stack.Navigator>
-    </NavigationContainer>
+    {isAppReady ? <Navigation /> : <SplashScreen />}
+  </NavigationContainer>
   );
 }
 

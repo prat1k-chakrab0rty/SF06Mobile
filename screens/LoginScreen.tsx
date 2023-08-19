@@ -3,12 +3,22 @@ import React from 'react'
 
 const LoginScreen = () => {
   return (
-    <View>
-      <Text>LoginScreen</Text>
+    <View style={styles.container}>
+      <Text style={styles.passLabel}>enter passcode</Text>
     </View>
   )
 }
 
 export default LoginScreen
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  passLabel:{
+    color:'#33cccc',
+    fontSize:20,
+  }
+})
